@@ -1,0 +1,87 @@
+/* =========================================================
+   VIP SCHUMANN - DESKTOP FIXES
+   Diese Datei NACH style.css in der index.html einbinden.
+   Sie verändert nur Tablet-/Laptop-/Desktop-Ansichten ab 761px.
+   Die iPhone-Darstellung bleibt unverändert.
+   ========================================================= */
+
+/* Den Hinweistext unter dem Anfrage-Button ausblenden. */
+.form-note {
+  display: none;
+}
+
+/* Ab Tablet-/Laptopbreite: Fuhrpark sauber untereinander anzeigen. */
+@media (min-width: 761px) {
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .fleet-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+    background: var(--white, #ffffff);
+    color: var(--near-black, #111111);
+    border-radius: var(--radius, 16px);
+    overflow: hidden;
+    box-shadow: var(--shadow, 0 24px 60px rgba(0, 0, 0, 0.22));
+  }
+
+  /* Das vollständige Bild bleibt sichtbar und wird nicht zugeschnitten. */
+  .fleet-card > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+    background: #ffffff;
+  }
+
+  .fleet-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 36px 40px 40px;
+  }
+
+  .fleet-content h3 {
+    font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  }
+
+  .fleet-content > p:not(.fleet-category) {
+    max-width: 760px;
+    margin: 14px 0 28px;
+  }
+
+  .fleet-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: auto;
+  }
+}
+
+/* Größere Laptop- und Desktop-Bildschirme erhalten etwas mehr Raum. */
+@media (min-width: 1200px) {
+  .section {
+    width: min(1360px, calc(100% - 80px));
+  }
+
+  .fleet-grid {
+    max-width: 1180px;
+    gap: 48px;
+  }
+
+  .fleet-content {
+    padding: 40px 48px 44px;
+  }
+}
